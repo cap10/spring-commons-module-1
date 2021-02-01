@@ -11,7 +11,7 @@
     <groupId>io.github.invenico.commons</groupId>
     <artifactId>spring-commons-module</artifactId>
     <name>spring-commons-module</name>
-    <version>1.4.6</version>
+    <version>1.4.6.RELEASE</version>
     <packaging>jar</packaging>
     <description>Commons for java project modules</description>
 
