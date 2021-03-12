@@ -1,5 +1,6 @@
 package zw.co.invenico.springcommonsmodule.utils;
 
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;

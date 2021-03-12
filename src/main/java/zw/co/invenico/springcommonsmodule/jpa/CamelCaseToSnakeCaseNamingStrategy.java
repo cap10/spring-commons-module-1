@@ -1,5 +1,6 @@
 package zw.co.invenico.springcommonsmodule.jpa;
 
+
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;

@@ -1,10 +1,11 @@
 package zw.co.invenico.springcommonsmodule.exception;
 
+
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import zw.co.invenico.springcommonsmodule.dto.RestResponse;
+
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
@@ -31,12 +33,7 @@ import java.util.NoSuchElementException;
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
 
-//    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
-//    public final ResponseEntity<ErrorMessage> handleAccessDeniedException(org.springframework.security.access.AccessDeniedException ex, WebRequest request) {
-//        ErrorMessage errorDetails = new ErrorMessage(new Date(), ex.getMessage(), request.getDescription(false), ex.getClass().getName());
-//        ex.printStackTrace();
-//        return new ResponseEntity<>(errorDetails, HttpStatus.FORBIDDEN);
-//    }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(FeignException.class)
@@ -52,6 +49,18 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
     @ExceptionHandler(InvalidRequestException.class)
     public final ResponseEntity<RestResponse> handleInvalidRequestException(InvalidRequestException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FileNotFoundException.class)
+    public final ResponseEntity<RestResponse> handleInvalidRequestException(FileNotFoundException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FileStorageException.class)
+    public final ResponseEntity<RestResponse> handleInvalidRequestException(FileStorageException ex, WebRequest request) {
         RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
@@ -88,6 +97,80 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
     @ExceptionHandler(NullPointerException.class)
     public final ResponseEntity<RestResponse> handleIllegalOperationException(NullPointerException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(InsufficientFundsException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(InsufficientFundsException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(AccessDeniedException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(AccountDoesNotExistException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(AccountDoesNotExistException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
+    @ExceptionHandler(AccountNotActiveException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(AccountNotActiveException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(BusinessValidationException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(BusinessValidationException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
+    @ExceptionHandler(AmountInvalidException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(AmountInvalidException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(DeviceNotActiveException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(DeviceNotActiveException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(EntityNotFoundException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(IncorrectPinException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(IncorrectPinException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(TransactionLimitException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(TransactionLimitException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(TransactionNotAllowedException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(TransactionNotAllowedException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(VelocityException.class)
+    public final ResponseEntity<RestResponse> handleIllegalOperationException(VelocityException ex, WebRequest request) {
         RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
