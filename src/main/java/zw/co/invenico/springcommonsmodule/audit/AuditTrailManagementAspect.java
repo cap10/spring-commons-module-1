@@ -5,6 +5,7 @@ import lombok.val;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,8 @@ import java.util.Optional;
 @Aspect
 public class AuditTrailManagementAspect {
 
-    private final AuditFeignClientService auditFeignClientService;
+    @Autowired
+    private AuditFeignClientService auditFeignClientService;
 
     public AuditTrailManagementAspect(AuditFeignClientService auditFeignClientService) {
         this.auditFeignClientService = auditFeignClientService;
