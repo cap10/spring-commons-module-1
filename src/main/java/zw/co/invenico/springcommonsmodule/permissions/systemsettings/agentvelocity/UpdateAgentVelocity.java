@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('UPDATE_SHIFT_DIRECTORATE')")
+@PreAuthorize("hasAuthority('UPDATE_AGENT_VELOCITY')")
 public @interface UpdateAgentVelocity {
 }

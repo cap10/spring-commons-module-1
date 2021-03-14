@@ -99,6 +99,9 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.22.Final</version>
         </dependency>
+
+
+
     </dependencies>
 
     <properties>

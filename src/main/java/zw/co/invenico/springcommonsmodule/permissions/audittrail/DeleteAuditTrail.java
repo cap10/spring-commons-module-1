@@ -1,6 +1,5 @@
 package zw.co.invenico.springcommonsmodule.permissions.audittrail;
 
-
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.lang.annotation.ElementType;
@@ -10,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('UPDATE_ASSIGNMENT_CODE')")
-public @interface UpdateAssignmentCode {
+@PreAuthorize("hasAuthority('DELETE_AUDIT_TRAIL')")
+public @interface DeleteAuditTrail {
 }

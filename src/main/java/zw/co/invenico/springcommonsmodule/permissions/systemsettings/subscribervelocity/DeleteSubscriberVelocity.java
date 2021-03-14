@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('DELETE_SHIFT_DIRECTORATE')")
+@PreAuthorize("hasAuthority('DELETE_SUBSCRIBER_VELOCITY')")
 public @interface DeleteSubscriberVelocity {
 }

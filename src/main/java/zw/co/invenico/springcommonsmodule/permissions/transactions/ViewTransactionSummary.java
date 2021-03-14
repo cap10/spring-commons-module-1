@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('VIEW_SHIFT_LOCATION')")
+@PreAuthorize("hasAuthority('VIEW_TRANSACTION_SUMMARY')")
 public @interface ViewTransactionSummary {
 }

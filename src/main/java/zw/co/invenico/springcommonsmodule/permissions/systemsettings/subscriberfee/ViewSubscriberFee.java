@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('VIEW_SHIFT_DIRECTORATE')")
+@PreAuthorize("hasAuthority('VIEW_SUBSCRIBER_FEE')")
 public @interface ViewSubscriberFee {
 }

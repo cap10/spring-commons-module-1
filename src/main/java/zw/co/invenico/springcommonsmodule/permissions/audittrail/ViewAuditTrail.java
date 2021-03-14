@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('VIEW_ASSIGNMENT_CODE')")
-public @interface ViewAssignmentCode {
+@PreAuthorize("hasAuthority('VIEW_AUDIT_TRAIL')")
+public @interface ViewAuditTrail {
 }

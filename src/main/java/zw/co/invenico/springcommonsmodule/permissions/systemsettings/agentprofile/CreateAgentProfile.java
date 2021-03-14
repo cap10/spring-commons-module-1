@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('CREATE_SHIFT_DIRECTORATE')")
+@PreAuthorize("hasAuthority('CREATE_AGENT_PROFILE')")
 public @interface CreateAgentProfile {
 }

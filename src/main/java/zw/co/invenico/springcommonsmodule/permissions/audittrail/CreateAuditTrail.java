@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize("hasAuthority('DELETE_ASSIGNMENT_CODE')")
-public @interface DeleteAssignmentCode {
+@PreAuthorize("hasAuthority('CREATE_AUDIT_TRAIL')")
+public @interface CreateAuditTrail {
 }
