@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "akupay-api-gateway"/*, url = "http://144.91.106.206:8202"*/)
+@FeignClient(name = "akupay-api-gateway",url="https://api-akupay.jugaad.co.zw")
 @RibbonClient("AKUPAY-AUDIT-TRAIL-SERVICE")
 public interface AuditFeignClientService {
 

@@ -5,7 +5,6 @@ import lombok.val;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -23,8 +22,10 @@ import java.util.Optional;
 @Aspect
 public class AuditTrailManagementAspect {
 
-    @Autowired
-    private AuditFeignClientService auditFeignClientService;
+
+    private final AuditFeignClientService auditFeignClientService;
+
+
 
     public AuditTrailManagementAspect(AuditFeignClientService auditFeignClientService) {
         this.auditFeignClientService = auditFeignClientService;
@@ -71,7 +72,7 @@ public class AuditTrailManagementAspect {
             username = getUsername();
 
 
-            //userAgent = request.getHeader("User-Agent");
+            userAgent = request.getHeader("User-Agent");
 
             Object result = joinPoint.proceed();
 
@@ -86,7 +87,7 @@ public class AuditTrailManagementAspect {
             String finalServerIPAddress = serverIPAddress;
             String finalUsername = username;
             String finalPayload = payload;
-            //String finalUserAgent = userAgent;
+            String finalUserAgent = userAgent;
 
             try {
                 new Thread(() -> {
@@ -94,13 +95,17 @@ public class AuditTrailManagementAspect {
                             .actionPerformed(audit.action())
                             .resource(audit.resource())
                             .clientIpAddress(finalClientIPAddress)
-                           // .userAgent(finalUserAgent)
+                            .userAgent(finalUserAgent)
                             .dateTime(LocalDateTime.now())
                             .serverIpAddress(finalServerIPAddress)
                             .username(finalUsername)
                             .payload(finalPayload)
                             .build();
                     Object response = auditFeignClientService.create(auditActionRequest);
+
+                    /*RestTemplate restTemplate = new RestTemplate();
+                    Object response = restTemplate.postForObject("https://api-akupay.jugaad.co.zw/akupay-audit-trail-service/api/v1/audits/create",
+                            auditActionRequest, Object.class);*/
 
                     log.info("### response {}", response);
                 }).start();

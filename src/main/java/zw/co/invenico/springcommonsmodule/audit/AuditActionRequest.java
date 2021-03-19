@@ -17,7 +17,7 @@ public class AuditActionRequest {
 
     private String resource;
 
-   // private String userAgent;
+    private String userAgent;
 
     private String actionPerformed;
 
