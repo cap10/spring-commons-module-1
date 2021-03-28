@@ -12,6 +12,7 @@ public class RestResponse {
     private String message;
     private String timestamp;
     private HttpStatus status;
+    private int errorCode;
 
     public RestResponse() {
         this.statusCode = HttpStatus.OK.value();
@@ -24,9 +25,13 @@ public class RestResponse {
         this.status = status;
     }
 
-//    public RestResponse(String message, HttpStatus code, String description) {
-//        this.message = message;
-//        this.statusCode = code.value();
-//        this.description = description;
-//    }
+    public RestResponse( String message, String timestamp, HttpStatus status, int errorCode) {
+        this.statusCode = status.value();
+        this.message = message;
+        this.timestamp = timestamp;
+        this.status = status;
+        this.errorCode = errorCode;
+    }
+
+
 }
