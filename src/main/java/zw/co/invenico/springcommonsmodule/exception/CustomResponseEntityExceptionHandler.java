@@ -95,6 +95,12 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @ExceptionHandler(MobileNumberInvalidException.class)
+    public final ResponseEntity<RestResponse> handleMobileNumberInvalidException(MobileNumberInvalidException ex, WebRequest request) {
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.NOT_ACCEPTABLE, 6);
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_ACCEPTABLE);
+    }
+
     @ExceptionHandler(NullPointerException.class)
     public final ResponseEntity<RestResponse> handleIllegalOperationException(NullPointerException ex, WebRequest request) {
         RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.INTERNAL_SERVER_ERROR, 100);
