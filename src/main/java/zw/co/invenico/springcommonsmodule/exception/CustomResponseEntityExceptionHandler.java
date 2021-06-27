@@ -190,12 +190,12 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
             errors.add(violation.getRootBeanClass().getName() + " " +
                     violation.getPropertyPath() + ": " + violation.getMessage());
         }
-        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.BAD_REQUEST,6);
-        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+        RestResponse errorDetails = new RestResponse(ex.getMessage(), LocalDateTime.now().toString(), HttpStatus.CONFLICT,6);
+        return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<Object> handleDataIntegrityViolationException(WebRequest request, Exception ex) {
         log.error(ex.getMessage());
         String message = getRootException(ex).getLocalizedMessage();
@@ -205,8 +205,8 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         if (message.contains("Duplicate")) {
             message = message.replace(message.substring(message.indexOf("for"), message.length()), ". This value must be unique.");
         }
-        RestResponse errorDetails = new RestResponse(message, LocalDateTime.now().toString(), HttpStatus.BAD_REQUEST,6);
-        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+        RestResponse errorDetails = new RestResponse(message, LocalDateTime.now().toString(), HttpStatus.CONFLICT,6);
+        return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
 
     }
 
